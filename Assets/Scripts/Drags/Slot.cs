@@ -11,8 +11,6 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
     private GameObject miniPlayer;
 
     public bool HasCard => currentCard != null;
-    
-    
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -68,4 +66,14 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
         currentCard = null;
         return card;
     }
+
+    public Card GetCurrentCard()
+    {
+        if (currentCard != null)
+            return currentCard;
+
+        throw new System.Exception("Card is null");
+    }
+
+
 }

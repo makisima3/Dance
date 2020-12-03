@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Move 3
   m_EditorClassIdentifier: 
   avatar: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-  danceParameterName: dead
+  danceParameterName: happy
   normalParameterName: normal

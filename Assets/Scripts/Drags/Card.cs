@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class Card : MonoBehaviour
 {
-    private CardData data;
+    public CardData data;
     private Animator animator;
 
     public new RectTransform transform { get; private set; }
