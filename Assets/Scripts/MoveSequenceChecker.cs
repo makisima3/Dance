@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveSequenceChecker : MonoBehaviour
 {
@@ -49,9 +50,10 @@ public class MoveSequenceChecker : MonoBehaviour
 
             if (playerMove != teacherMove)
             {
+                slot.GetComponent<Image>().color = Color.red;
                 return false;
             }
-
+            slot.GetComponent<Image>().color = Color.green;
             i++;
             if (i >= 4)
             {
@@ -109,4 +111,6 @@ public class MoveSequenceChecker : MonoBehaviour
             }
         }
     }
+
+
 }

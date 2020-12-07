@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e57dfc349e7506468134c1a10f5381d, type: 3}
   m_Name: Move 2
   m_EditorClassIdentifier: 
-  avatar: {fileID: 3541754002163558908, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
-  danceParameterName: angry
-  normalParameterName: normal
+  avatar: {fileID: 919132149155446097, guid: 1e4bbea54f03b05409baf91ecdbd294f, type: 3}
+  danceParameterName: Saisa
+  normalParameterName: idle
