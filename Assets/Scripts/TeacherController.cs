@@ -48,7 +48,7 @@ public class TeacherController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(TextWriting(teacherPhrase1));
-        //Time.timeScale = 10f;
+        Time.timeScale = 10f;
         //danceCoroutine = StartCoroutine(TeacherDancing());
     }
 
