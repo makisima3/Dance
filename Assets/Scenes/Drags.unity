@@ -1079,6 +1079,10 @@ PrefabInstance:
       propertyPath: isEndSlot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170063161969720940, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
+      propertyPath: handHintPrefab
+      value: 
+      objectReference: {fileID: 587344596}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1109,11 +1113,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2579,13 +2583,19 @@ MonoBehaviour:
   - Saisa
   - Snake
   - HipHop
-  writingTextSpeed: 0.01
+  writingTextSpeed: 0.1
   phraseDelay: 1
   teacherPhrasePlace: {fileID: 1986206711}
-  hint: {fileID: 0}
+  hint: {fileID: 542599994}
   teacherPhrase1: Hi, I'm Christie, today we will learn to dance!
   teacherPhrase2: Remember these dance moves
   doDance: 1
+  handEase: 22
+  handSpeed: 3
+  handRepeatDeleay: 2
+  handStartPosition: {x: 188, y: -861}
+  handEndPosition: {x: 212, y: 638}
+  isRewind: 1
 --- !u!1 &749347045
 GameObject:
   m_ObjectHideFlags: 0
@@ -9747,6 +9757,10 @@ PrefabInstance:
       propertyPath: isEndSlot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170063161969720940, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
+      propertyPath: handHintPrefab
+      value: 
+      objectReference: {fileID: 587344596}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9777,11 +9791,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11925,6 +11939,10 @@ PrefabInstance:
       propertyPath: isEndSlot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170063161969720940, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
+      propertyPath: handHintPrefab
+      value: 
+      objectReference: {fileID: 587344596}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11955,11 +11973,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12052,6 +12070,12 @@ MonoBehaviour:
   teacherPhrase1: 
   teacherPhrase2: 
   doDance: 1
+  handEase: 32
+  handSpeed: 3
+  handRepeatDeleay: 2
+  handStartPosition: {x: 0, y: 0}
+  handEndPosition: {x: 0, y: 0}
+  isRewind: 1
 --- !u!1 &1963135884
 GameObject:
   m_ObjectHideFlags: 0
@@ -12618,6 +12642,10 @@ PrefabInstance:
       propertyPath: isEndSlot
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7170063161969720940, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
+      propertyPath: handHintPrefab
+      value: 
+      objectReference: {fileID: 587344596}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12648,11 +12676,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14262,11 +14290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689202729535105670, guid: 3283bae0f7718744fad082cfa2c59918, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 188
+      value: 212
       objectReference: {fileID: 0}
     - target: {fileID: 5689202729535105670, guid: 3283bae0f7718744fad082cfa2c59918, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -861
+      value: 638
       objectReference: {fileID: 0}
     - target: {fileID: 5689202729535105670, guid: 3283bae0f7718744fad082cfa2c59918, type: 3}
       propertyPath: m_SizeDelta.x

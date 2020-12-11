@@ -28,6 +28,8 @@ public class MoveSequenceChecker : MonoBehaviour
     [SerializeField] private float likesAddSpeed = 0.01f;
     [SerializeField] private float comentsAddSpeed = 0.1f;
 
+    private bool isFirstMove = true;
+
     private int animIndex = 0;
 
     private Coroutine movesChek;
@@ -63,7 +65,9 @@ public class MoveSequenceChecker : MonoBehaviour
 
             //    Debug.Log("lose!:(");
             //}
+            isFirstMove = true;
             movesChek = StartCoroutine(MovesChek());
+            playButton.GetComponent<Button>().enabled = false;
         }
         else
         {
@@ -114,8 +118,9 @@ public class MoveSequenceChecker : MonoBehaviour
         int i = 0;
         foreach (var slot in endSlots)
         {
-            yield return new WaitForSeconds(TeacherController.Instance.teacher.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-
+            if (!isFirstMove)
+                yield return new WaitForSeconds(TeacherController.Instance.teacher.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+            isFirstMove = false;
             var playerMove = slot.GetCurrentCard().data.danceParameterName;
             var teacherMove = TeacherController.Instance.moveSequence[i];
 
@@ -183,11 +188,11 @@ public class MoveSequenceChecker : MonoBehaviour
 
     public void Lose()
     {
-        StopCoroutine(movesChek);
-        TeacherController.Instance.doDance = false;
-        TeacherController.Instance.StopDance();
+        playButton.GetComponent<Button>().enabled = true;
+        StopCoroutine(movesChek);        
+        //TeacherController.Instance.StopDance();
         playerPrefab.GetComponent<Animator>().SetTrigger("Sad");
-        TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger("Sad");
+        //TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger("Sad");
         loseText.gameObject.SetActive(true);
     }
 

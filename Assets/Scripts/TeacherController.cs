@@ -29,12 +29,25 @@ public class TeacherController : MonoBehaviour
     public string teacherPhrase2;
     public bool doDance = true;
 
+    public Ease handEase = Ease.Flash;
+    public float handSpeed = 3f;
+    public float handRepeatDeleay = 2f;
+    public Vector2 handStartPosition;
+    public Vector2 handEndPosition;
+
+    public bool isRewind = true;
+
+    
+    [NonSerialized]
+    public Coroutine handMove;
+
     private Coroutine danceCoroutine;
 
     private int animIndex = 0;
     private string currentAnimation;
 
     private bool isEndSpeach = false;
+    private bool isFirstMove = true;
     private bool isLastMove = true;
 
     private void Awake()
@@ -48,7 +61,8 @@ public class TeacherController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(TextWriting(teacherPhrase1));
-        Time.timeScale = 10f;
+        if (isRewind)
+            Time.timeScale = 10f;
         //danceCoroutine = StartCoroutine(TeacherDancing());
     }
 
@@ -77,7 +91,10 @@ public class TeacherController : MonoBehaviour
     {
         while (doDance)
         {
-            yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+            if (!isFirstMove)
+                yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+
+            isFirstMove = false;
 
             GetComponent<Animator>().SetTrigger(moveSequence[animIndex]);
             teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":" + moveSequence[animIndex];
@@ -115,9 +132,22 @@ public class TeacherController : MonoBehaviour
         slots.SetActive(true);
         hint.gameObject.SetActive(true);
 
+        handHintPrefab.transform.localPosition = handStartPosition;
         handHintPrefab.SetActive(true);
-        handHintPrefab.transform.DOLocalMove(new Vector3(219f, 661f, 0f), 3f).SetEase(Ease.Flash)
-            .OnComplete(() => handHintPrefab.SetActive(false));
+
+        handMove = StartCoroutine(HandMove());
+    }
+
+    public IEnumerator HandMove()
+    {
+        while (true)
+        {
+            handHintPrefab.transform.DOLocalMove(handEndPosition, handSpeed).SetEase(handEase);
+
+            yield return new WaitForSeconds(handSpeed);
+
+            handHintPrefab.transform.localPosition = handStartPosition;
+        }
     }
 
     public IEnumerator TextWriting(string Phrase)
