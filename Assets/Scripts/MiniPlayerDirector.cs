@@ -29,12 +29,9 @@ public class MiniPlayerDirector : MonoBehaviour
         newCamera.transform.localPosition = cameraPosition;
         newCamera.targetTexture = RenderTexture.GetTemporary(256, 256, 0, RenderTextureFormat.ARGB32,
                                                                 RenderTextureReadWrite.Default, 8,
-                                                                RenderTextureMemoryless.Color);
+                                                                RenderTextureMemoryless.Color);        
 
-        Material material = new Material(baseShader);
-        material.mainTexture = newCamera.targetTexture;
-
-        card.SetMaterial(material);
+        card.SetTexture(newCamera.targetTexture);
 
         return newMiniPlayer.GetComponent<Animator>();
     }

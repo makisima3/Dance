@@ -10,7 +10,7 @@ public class Card : MonoBehaviour
     public new RectTransform transform { get; private set; }
 
     [SerializeField]
-    private Image image;
+    private RawImage image;
 
     private void Awake()
     {
@@ -43,9 +43,9 @@ public class Card : MonoBehaviour
         animator.SetTrigger(data.normalParameterName);
     }
 
-    public void SetMaterial(Material material)
+    public void SetTexture(RenderTexture texture)
     {
-        image.material = material;
-        image.SetMaterialDirty();
+        image.texture = texture;
+        //image.SetMaterialDirty();
     }
 }
