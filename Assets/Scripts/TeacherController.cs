@@ -13,8 +13,7 @@ public class TeacherController : MonoBehaviour
     public GameObject Player;
     public GameObject availableCards;
     public GameObject slots;
-    public GameObject handHintPrefab;
-
+    
     public Button reloadScene, ready;
 
     public List<string> moveSequence;
@@ -27,19 +26,9 @@ public class TeacherController : MonoBehaviour
 
     public string teacherPhrase1;
     public string teacherPhrase2;
-    public bool doDance = true;
-
-    public Ease handEase = Ease.Flash;
-    public float handSpeed = 3f;
-    public float handRepeatDeleay = 2f;
-    public Vector2 handStartPosition;
-    public Vector2 handEndPosition;
+    public bool doDance = true;  
 
     public bool isRewind = true;
-
-    
-    [NonSerialized]
-    public Coroutine handMove;
 
     private Coroutine danceCoroutine;
 
@@ -110,7 +99,7 @@ public class TeacherController : MonoBehaviour
 
                     transform.DOMove(new Vector3(-2.17f, 1.52f, 10.47f), 3f).SetEase(Ease.Flash).OnComplete(
                                         () => Player.transform.DOMove(new Vector3(0.05f, -0.92f, 2.94f), 3f).SetEase(Ease.Flash)
-                        .OnComplete(() => SetSlotsActive()));
+                        .OnComplete(SetSlotsActive));
 
 
                     teacherPhrasePlace.gameObject.SetActive(false);
@@ -132,23 +121,10 @@ public class TeacherController : MonoBehaviour
         slots.SetActive(true);
         hint.gameObject.SetActive(true);
 
-        handHintPrefab.transform.localPosition = handStartPosition;
-        handHintPrefab.SetActive(true);
-
-        handMove = StartCoroutine(HandMove());
+        HandHint.Instance.Show();
     }
 
-    public IEnumerator HandMove()
-    {
-        while (true)
-        {
-            handHintPrefab.transform.DOLocalMove(handEndPosition, handSpeed).SetEase(handEase);
-
-            yield return new WaitForSeconds(handSpeed);
-
-            handHintPrefab.transform.localPosition = handStartPosition;
-        }
-    }
+    
 
     public IEnumerator TextWriting(string Phrase)
     {

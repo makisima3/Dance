@@ -10,14 +10,12 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
     [SerializeField]
     private GameObject miniPlayer;
 
-    [SerializeField]
-    private GameObject handHintPrefab;
 
     public bool HasCard => currentCard != null;
 
     private void Start()
     {
-        handHintPrefab = GameObject.Find("HandHint");
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -28,9 +26,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
 
             Hand.Instance.Take(this.TakeCard(), this);
 
-            handHintPrefab.SetActive(false);
-            if(TeacherController.Instance.handMove != null)
-            StopCoroutine(TeacherController.Instance.handMove);
+            HandHint.Instance.Hide();
         }
     }
 

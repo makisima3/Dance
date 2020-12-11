@@ -2071,6 +2071,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5689202729535105670, guid: 3283bae0f7718744fad082cfa2c59918, type: 3}
   m_PrefabInstance: {fileID: 5826920894365675409}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &587344600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587344596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00fb2c47def195a4d9aa26c30c81e6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handEase: 32
+  handSpeed: 2
+  handRepeatDeleay: 3
+  handStartPosition: {x: 212, y: -779}
+  handEndPosition: {x: 212, y: 699}
 --- !u!1 &591568860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,7 +2592,6 @@ MonoBehaviour:
   Player: {fileID: 413117804}
   availableCards: {fileID: 1460586021}
   slots: {fileID: 158950874}
-  handHintPrefab: {fileID: 587344596}
   reloadScene: {fileID: 1501817341}
   ready: {fileID: 629849563}
   moveSequence:
@@ -2590,11 +2606,6 @@ MonoBehaviour:
   teacherPhrase1: Hi, I'm Christie, today we will learn to dance!
   teacherPhrase2: Remember these dance moves
   doDance: 1
-  handEase: 22
-  handSpeed: 3
-  handRepeatDeleay: 2
-  handStartPosition: {x: 188, y: -861}
-  handEndPosition: {x: 212, y: 638}
   isRewind: 1
 --- !u!1 &749347045
 GameObject:
@@ -12059,7 +12070,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   availableCards: {fileID: 0}
   slots: {fileID: 0}
-  handHintPrefab: {fileID: 0}
   reloadScene: {fileID: 0}
   ready: {fileID: 0}
   moveSequence: []
@@ -12070,11 +12080,6 @@ MonoBehaviour:
   teacherPhrase1: 
   teacherPhrase2: 
   doDance: 1
-  handEase: 32
-  handSpeed: 3
-  handRepeatDeleay: 2
-  handStartPosition: {x: 0, y: 0}
-  handEndPosition: {x: 0, y: 0}
   isRewind: 1
 --- !u!1 &1963135884
 GameObject:
@@ -14242,7 +14247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3372324253910573231, guid: 3283bae0f7718744fad082cfa2c59918, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5689202729535105670, guid: 3283bae0f7718744fad082cfa2c59918, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14294,7 +14299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5689202729535105670, guid: 3283bae0f7718744fad082cfa2c59918, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 638
+      value: -812
       objectReference: {fileID: 0}
     - target: {fileID: 5689202729535105670, guid: 3283bae0f7718744fad082cfa2c59918, type: 3}
       propertyPath: m_SizeDelta.x
