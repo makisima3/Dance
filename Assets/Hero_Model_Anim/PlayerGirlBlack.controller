@@ -83,7 +83,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1736705342035688093}
-    m_Position: {x: 140, y: 50, z: 0}
+    m_Position: {x: 180, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6589621217639325535}
     m_Position: {x: 405.89337, y: -0.48657227, z: 0}
@@ -122,7 +122,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Saisa
+  m_Name: Gypsy flower
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -232,7 +232,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rumba
+  m_Name: Wavy steps
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -412,7 +412,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HipHop
+  m_Name: Shaking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
