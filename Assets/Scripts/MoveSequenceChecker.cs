@@ -33,6 +33,7 @@ public class MoveSequenceChecker : MonoBehaviour
     private int animIndex = 0;
 
     private Coroutine movesChek;
+    private bool doMoveChek = true;
 
     public void Start()
     {
@@ -66,8 +67,10 @@ public class MoveSequenceChecker : MonoBehaviour
             //    Debug.Log("lose!:(");
             //}
             isFirstMove = true;
+            doMoveChek = true;
+            playButton.GetComponent<Button>().interactable = false;
             movesChek = StartCoroutine(MovesChek());
-            playButton.GetComponent<Button>().enabled = false;
+            Debug.Log("ТУТ ВЫКЛЮЧАЕТЬСЯ КНОПКА");
         }
         else
         {
@@ -118,33 +121,41 @@ public class MoveSequenceChecker : MonoBehaviour
         int i = 0;
         foreach (var slot in endSlots)
         {
-            if (!isFirstMove)
-                yield return new WaitForSeconds(TeacherController.Instance.teacher.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-            isFirstMove = false;
-            var playerMove = slot.GetCurrentCard().data.danceParameterName;
-            var teacherMove = TeacherController.Instance.moveSequence[i];
-
-            if (playerMove != teacherMove)
+            if (doMoveChek)
             {
-                slot.GetComponent<Image>().color = Color.red;
-                Lose();
+                if (!isFirstMove)
+                    yield return new WaitForSeconds(TeacherController.Instance.teacher.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+                isFirstMove = false;
+                var playerMove = slot.GetCurrentCard().data.danceParameterName;
+                var teacherMove = TeacherController.Instance.moveSequence[i];
+
+                if (playerMove != teacherMove)
+                {
+                    slot.GetCurrentCard().GetComponent<Image>().color = Color.red;
+                    Lose();
+                    //playButton.GetComponent<Button>().enabled = true;
+                }
+                else
+                {
+                    slot.GetCurrentCard().GetComponent<Image>().color = Color.green;
+
+                    playerPrefab.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
+                    TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
+                }
+
+
+                if (i >= 3)
+                {
+                    Victory();
+                    i = 0;
+                }
+
+                i++;
             }
             else
             {
-                slot.GetComponent<Image>().color = Color.green;
-
-                playerPrefab.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
-                TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
+                break;
             }
-
-
-            if (i >= 3)
-            {
-                Victory();
-                i = 0;
-            }
-
-            i++;
         }
     }
 
@@ -188,8 +199,12 @@ public class MoveSequenceChecker : MonoBehaviour
 
     public void Lose()
     {
-        playButton.GetComponent<Button>().enabled = true;
-        StopCoroutine(movesChek);        
+        Debug.Log("LOSE");
+        doMoveChek = false;
+        playButton.GetComponent<Button>().interactable = true;
+        Debug.Log("ТУТ ВКЛЮЧАЕТЬСЯ КНОПКА - " + playButton.GetComponent<Button>().interactable);
+        if (movesChek != null)
+            StopCoroutine(movesChek);
         //TeacherController.Instance.StopDance();
         playerPrefab.GetComponent<Animator>().SetTrigger("Sad");
         //TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger("Sad");
@@ -198,6 +213,7 @@ public class MoveSequenceChecker : MonoBehaviour
 
     public void Victory()
     {
+        playButton.SetActive(false);
         loseText.gameObject.SetActive(false);
 
         particles.SetActive(true);

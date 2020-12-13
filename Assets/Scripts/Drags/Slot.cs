@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
 {
@@ -23,6 +24,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
         if (HasCard)
         {
             currentCard.StopDance();
+            currentCard.GetComponent<Image>().color = Color.white;
 
             Hand.Instance.Take(this.TakeCard(), this);
 

@@ -31,7 +31,8 @@ public class Card : MonoBehaviour
 
     public void RandomizeColor()
     {
-        image.color = Random.ColorHSV(0f, 1f, 0.5f, 0.5f, 1f, 1f);
+        //image.color = Random.ColorHSV(0f, 1f, 0.5f, 0.5f, 1f, 1f);
+        image.color = Random.ColorHSV(0f, 0f, 0f, 0f, 0f, 0f);
     }
 
     public void DoDance()

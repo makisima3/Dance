@@ -13,16 +13,21 @@ public class TeacherController : MonoBehaviour
     public GameObject Player;
     public GameObject availableCards;
     public GameObject slots;
+    public GameObject phone;
     
     public Button reloadScene, ready;
 
     public List<string> moveSequence;
+    public Dictionary<string, string> stateNAme;
 
     public float writingTextSpeed = 0.1f;
     public float phraseDelay = 5f;
 
+    public Image imageForText;
+
     public Text teacherPhrasePlace;
     public Text hint;
+    public Text moveNumber;
 
     public string teacherPhrase1;
     public string teacherPhrase2;
@@ -44,7 +49,7 @@ public class TeacherController : MonoBehaviour
         Instance = this;
         teacher = transform.gameObject;
 
-
+        stateNAme = new Dictionary<string, string>();
     }
 
     private void Start()
@@ -52,6 +57,12 @@ public class TeacherController : MonoBehaviour
         StartCoroutine(TextWriting(teacherPhrase1));
         if (isRewind)
             Time.timeScale = 10f;
+
+        stateNAme.Add("Rumba", "Wavy steps");
+        stateNAme.Add("HipHop", "Shaking");
+        stateNAme.Add("Saisa", "Gypsy flower");
+        stateNAme.Add("Snake", "Snake");
+
         //danceCoroutine = StartCoroutine(TeacherDancing());
     }
 
@@ -80,13 +91,20 @@ public class TeacherController : MonoBehaviour
     {
         while (doDance)
         {
+
             if (!isFirstMove)
                 yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
             isFirstMove = false;
 
-            GetComponent<Animator>().SetTrigger(moveSequence[animIndex]);
-            teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":" + moveSequence[animIndex];
+           
+
+            GetComponent<Animator>().SetTrigger(moveSequence[animIndex]); 
+            
+            AnimatorStateInfo animatorClipInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+            Debug.Log(GetStateName(animatorClipInfo));
+            teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":" + stateNAme[moveSequence[animIndex]];
+            moveNumber.text = "#" + (animIndex + 1);
             animIndex++;
 
             if (animIndex >= 4)
@@ -97,13 +115,15 @@ public class TeacherController : MonoBehaviour
                     Time.timeScale = 1f;
                     yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
 
+                    moveNumber.gameObject.SetActive(false);
+                    phone.GetComponent<Animator>().SetTrigger("Move");
                     transform.DOMove(new Vector3(-2.17f, 1.52f, 10.47f), 3f).SetEase(Ease.Flash).OnComplete(
-                                        () => Player.transform.DOMove(new Vector3(0.05f, -0.92f, 2.94f), 3f).SetEase(Ease.Flash)
+                                        () => Player.transform.DOMove(Player.transform.position, 0.1f).SetEase(Ease.Flash)
                         .OnComplete(SetSlotsActive));
 
 
                     teacherPhrasePlace.gameObject.SetActive(false);
-
+                    imageForText.gameObject.SetActive(false);
 
 
                     isLastMove = false;
@@ -115,8 +135,53 @@ public class TeacherController : MonoBehaviour
         }
     }
 
+    public string GetStateName(AnimatorStateInfo state)
+    {
+        if(state.IsName("Wavy steps"))
+        {
+            return "Wavy steps";
+        }
+        if (state.IsName("Shaking"))
+        {
+            return "Shaking";
+        }
+        if (state.IsName("Gypsy flower"))
+        {
+            return "Gypsy flower";
+        }
+        if (state.IsName("Snake"))
+        {
+            return "Snake";
+        }
+
+        //int state1 = Animator.StringToHash("Wavy steps");
+        //int state2 = Animator.StringToHash("Shaking");
+        //int state3 = Animator.StringToHash("Gypsy flower");
+        //int state4 = Animator.StringToHash("Snake");
+
+        //if (nameHash == state1)
+        //{
+        //    return "Wavy steps";
+        //}
+        //if (nameHash == state2)
+        //{
+        //    return "Shaking";
+        //}
+        //if (nameHash == state3)
+        //{
+        //    return "Gypsy flower";
+        //}
+        //if (nameHash == state4)
+        //{
+        //    return "Snake";
+        //}
+
+        return string.Empty;
+    }
+
     public void SetSlotsActive()
     {
+        
         availableCards.SetActive(true);
         slots.SetActive(true);
         hint.gameObject.SetActive(true);
