@@ -144,6 +144,8 @@ public class TeacherController : MonoBehaviour
 
                     moveNumber.gameObject.SetActive(false);
                     phone.GetComponent<Animator>().SetTrigger("Move");
+                    StartCoroutine(TextActiv());
+                    
                     //new Vector3(-2.17f, 1.52f, 10.47f)
                     transform.DOMove(transform.position, 3f).SetEase(Ease.Flash).OnComplete(
                                         () => Player.transform.DOMove(Player.transform.position, 0.1f).SetEase(Ease.Flash)
@@ -161,6 +163,12 @@ public class TeacherController : MonoBehaviour
                 animIndex = 0;
             }
         }
+    }
+
+    IEnumerator TextActiv()
+    {
+        yield return new WaitForSeconds(phone.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        miniMoveNumber.gameObject.SetActive(true);
     }
 
     public string GetStateName(AnimatorStateInfo state)
