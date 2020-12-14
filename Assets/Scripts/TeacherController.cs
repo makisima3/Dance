@@ -28,6 +28,8 @@ public class TeacherController : MonoBehaviour
     public Text teacherPhrasePlace;
     public Text hint;
     public Text moveNumber;
+    public Text miniMoveNumber;
+    public Text speedChangeButtonTXT;
 
     public string teacherPhrase1;
     public string teacherPhrase2;
@@ -43,6 +45,7 @@ public class TeacherController : MonoBehaviour
     private bool isEndSpeach = false;
     private bool isFirstMove = true;
     private bool isLastMove = true;
+    private bool isSpeedUp = true;
 
     private void Awake()
     {
@@ -64,6 +67,29 @@ public class TeacherController : MonoBehaviour
         stateNAme.Add("Snake", "Snake");
 
         //danceCoroutine = StartCoroutine(TeacherDancing());
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void SpeedChange()
+    {
+        if(isSpeedUp)
+        {
+            Time.timeScale = 2;
+
+            speedChangeButtonTXT.text = "X2";
+            isSpeedUp = false;
+        }
+        else if(!isSpeedUp)
+        {
+            Time.timeScale = 1;
+
+            speedChangeButtonTXT.text = "X1";
+            isSpeedUp = true;
+        }
     }
 
     internal void StopDance()
@@ -103,6 +129,7 @@ public class TeacherController : MonoBehaviour
             
             AnimatorStateInfo animatorClipInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
             Debug.Log(GetStateName(animatorClipInfo));
+            miniMoveNumber.text = "#" + (animIndex + 1);
             teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":" + stateNAme[moveSequence[animIndex]];
             moveNumber.text = "#" + (animIndex + 1);
             animIndex++;
@@ -117,7 +144,8 @@ public class TeacherController : MonoBehaviour
 
                     moveNumber.gameObject.SetActive(false);
                     phone.GetComponent<Animator>().SetTrigger("Move");
-                    transform.DOMove(new Vector3(-2.17f, 1.52f, 10.47f), 3f).SetEase(Ease.Flash).OnComplete(
+                    //new Vector3(-2.17f, 1.52f, 10.47f)
+                    transform.DOMove(transform.position, 3f).SetEase(Ease.Flash).OnComplete(
                                         () => Player.transform.DOMove(Player.transform.position, 0.1f).SetEase(Ease.Flash)
                         .OnComplete(SetSlotsActive));
 

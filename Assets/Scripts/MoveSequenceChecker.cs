@@ -53,20 +53,24 @@ public class MoveSequenceChecker : MonoBehaviour
     {
         if (IsSlotsIsNull())
         {
-            //if (MoveSequence())
-            //{
-            //    TeacherController.Instance.StopDance();
-            //    StartCoroutine(SyncDances());
+            foreach (var slot in endSlots)
+            {
+                slot.GetCurrentCard().GetComponent<Image>().color = Color.white;
+            }
+                //if (MoveSequence())
+                //{
+                //    TeacherController.Instance.StopDance();
+                //    StartCoroutine(SyncDances());
 
-            //    Debug.Log("vin!");
-            //}
-            //else
-            //{
-            //    StartCoroutine(PlayerAnsyncDance());
+                //    Debug.Log("vin!");
+                //}
+                //else
+                //{
+                //    StartCoroutine(PlayerAnsyncDance());
 
-            //    Debug.Log("lose!:(");
-            //}
-            isFirstMove = true;
+                //    Debug.Log("lose!:(");
+                //}
+                isFirstMove = true;
             doMoveChek = true;
             playButton.GetComponent<Button>().interactable = false;
             movesChek = StartCoroutine(MovesChek());
