@@ -2023,8 +2023,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 166, y: 732.26}
-  m_SizeDelta: {x: 709.5967, y: 172.51918}
+  m_AnchoredPosition: {x: 4.2, y: -498.8702}
+  m_SizeDelta: {x: 709.5967, y: 270.25964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542599994
 MonoBehaviour:
@@ -2039,7 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2048,11 +2048,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 66
+    m_FontSize: 86
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 66
+    m_MaxSize: 86
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2660,8 +2660,8 @@ MonoBehaviour:
   reloadScene: {fileID: 1501817341}
   ready: {fileID: 629849563}
   speedButton: {fileID: 1927437429}
-  speed_1X: {fileID: 21300000, guid: 4e0af01adeb383444973b63d14933212, type: 3}
-  speed_2X: {fileID: 21300000, guid: a456eadffe60ba44198766698057807b, type: 3}
+  speed_1X: {fileID: 21300000, guid: a456eadffe60ba44198766698057807b, type: 3}
+  speed_2X: {fileID: 21300000, guid: 4e0af01adeb383444973b63d14933212, type: 3}
   moveSequence:
   - Rumba
   - Saisa
@@ -2679,7 +2679,7 @@ MonoBehaviour:
   teacherPhrase2: Remember these dance moves
   doDance: 1
   isRewind: 0
-  hintTextHideDelay: 20
+  hintTextHideDelay: 10
 --- !u!1 &749347045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,7 +3225,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &912369183
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -3246,7 +3246,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d84aece8e3bae7c4780cd4080443675c, type: 2}
+  - {fileID: 2100000, guid: e84a039de49b80146b55065ae8e515d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3300,7 +3300,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912369182}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 1.01
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -3919,7 +3919,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 18
     angle: 50
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -3928,7 +3928,7 @@ ParticleSystem:
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 0, z: 1}
-    placementMode: 0
+    placementMode: 1
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
     m_MeshSpawn:
@@ -8014,8 +8014,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912369182}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.12, y: -1.34, z: 1.83}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.03, y: -1.034, z: 1.83}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
@@ -9130,7 +9130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 4.200012, y: 32.099976}
+  m_AnchoredPosition: {x: 4.199951, y: 32.099976}
   m_SizeDelta: {x: -562.1647, y: 252.1568}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1460586023
@@ -10367,12 +10367,12 @@ PrefabInstance:
       value: Girl_Black
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0bacc5d6e0e167a4291ff612cd6bb818, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 0bacc5d6e0e167a4291ff612cd6bb818, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0bacc5d6e0e167a4291ff612cd6bb818, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: 0bacc5d6e0e167a4291ff612cd6bb818, type: 3}
       propertyPath: m_Layer
@@ -12796,12 +12796,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987402364}
-  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 1.0170015, y: 1.2265007, z: 0.5694999}
-  m_LocalScale: {x: 0.08518004, y: 0.08518004, z: 0.08518}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 41.00005, y: 5.499971, z: -14.832004}
+  m_LocalScale: {x: 3.407199, y: 3.593724, z: 3.407199}
   m_Children: []
-  m_Father: {fileID: 730918919}
-  m_RootOrder: 2
+  m_Father: {fileID: 5983287091403032476}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &1987402366
 SpriteRenderer:
@@ -13639,7 +13639,7 @@ Transform:
   m_LocalScale: {x: 1.6, y: 1, z: 1.7}
   m_Children: []
   m_Father: {fileID: 5983287091403032476}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &718330673347583291
 Transform:
@@ -15171,6 +15171,7 @@ Transform:
   m_LocalPosition: {x: -0, y: -0.254, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
+  - {fileID: 1987402365}
   - {fileID: 8905690680310335643}
   - {fileID: 646173349722752028}
   - {fileID: 8856482635942750120}
@@ -15879,7 +15880,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5983287091403032476}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8905690680310335643
 Transform:
@@ -15893,7 +15894,7 @@ Transform:
   m_LocalScale: {x: 1.6, y: 1, z: 1.73}
   m_Children: []
   m_Father: {fileID: 5983287091403032476}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8908090484545676318
 Transform:
