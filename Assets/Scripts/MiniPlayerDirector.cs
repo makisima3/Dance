@@ -14,6 +14,7 @@ public class MiniPlayerDirector : MonoBehaviour
     public Camera cameraPrefab;
     public GameObject miniPlayerPrefab;
     public Shader baseShader;
+    public Vector3 externalOffset = new Vector3(0f,1.2f,-14f);
 
     public Animator Create(float positionOffset, Card card)
     {
@@ -23,7 +24,7 @@ public class MiniPlayerDirector : MonoBehaviour
         newMiniPlayer.transform.localPosition = position;
 
 
-        var cameraPosition = new Vector3(position.x, position.y + 1.2f, -14f);
+        var cameraPosition = new Vector3(position.x + externalOffset.x, position.y + externalOffset.y, externalOffset.z);
 
         var newCamera = Instantiate(cameraPrefab, transform, false);
         newCamera.transform.localPosition = cameraPosition;

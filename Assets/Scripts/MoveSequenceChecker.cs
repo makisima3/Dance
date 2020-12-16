@@ -11,6 +11,7 @@ public class MoveSequenceChecker : MonoBehaviour
     [SerializeField] private GameObject nextLVLButton;
 
     [SerializeField] private Text loseText;
+    [SerializeField] private float loseTextHideDelay = 10;
 
     [SerializeField] private GameObject playerPrefab;
 
@@ -213,6 +214,8 @@ public class MoveSequenceChecker : MonoBehaviour
         playerPrefab.GetComponent<Animator>().SetTrigger("Sad");
         //TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger("Sad");
         loseText.gameObject.SetActive(true);
+
+        StartCoroutine(LoseTextHiding());
     }
 
     public void Victory()
@@ -227,6 +230,13 @@ public class MoveSequenceChecker : MonoBehaviour
 
         StartCoroutine(AddLikes());
         StartCoroutine(AddComents());
+    }
+
+    IEnumerator LoseTextHiding()
+    {
+        yield return new WaitForSeconds(loseTextHideDelay);
+
+        loseText.gameObject.SetActive(false);
     }
 
     IEnumerator AddLikes()

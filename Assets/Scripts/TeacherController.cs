@@ -15,7 +15,9 @@ public class TeacherController : MonoBehaviour
     public GameObject slots;
     public GameObject phone;
     
-    public Button reloadScene, ready;
+    public Button reloadScene, ready, speedButton;
+
+    public Sprite speed_1X, speed_2X;
 
     public List<string> moveSequence;
     public Dictionary<string, string> stateNAme;
@@ -31,11 +33,14 @@ public class TeacherController : MonoBehaviour
     public Text miniMoveNumber;
     public Text speedChangeButtonTXT;
 
+
     public string teacherPhrase1;
     public string teacherPhrase2;
     public bool doDance = true;  
 
     public bool isRewind = true;
+
+    public float hintTextHideDelay = 20;
 
     private Coroutine danceCoroutine;
 
@@ -80,14 +85,16 @@ public class TeacherController : MonoBehaviour
         {
             Time.timeScale = 2;
 
-            speedChangeButtonTXT.text = "X2";
+            speedButton.image.sprite = speed_2X;
+            //speedChangeButtonTXT.text = "X2";
             isSpeedUp = false;
         }
         else if(!isSpeedUp)
         {
             Time.timeScale = 1;
 
-            speedChangeButtonTXT.text = "X1";
+            speedButton.image.sprite = speed_1X;
+            //speedChangeButtonTXT.text = "X1";
             isSpeedUp = true;
         }
     }
@@ -128,7 +135,7 @@ public class TeacherController : MonoBehaviour
             GetComponent<Animator>().SetTrigger(moveSequence[animIndex]); 
             
             AnimatorStateInfo animatorClipInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
-            Debug.Log(GetStateName(animatorClipInfo));
+
             miniMoveNumber.text = "#" + (animIndex + 1);
             teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":" + stateNAme[moveSequence[animIndex]];
             moveNumber.text = "#" + (animIndex + 1);
@@ -147,7 +154,7 @@ public class TeacherController : MonoBehaviour
                     StartCoroutine(TextActiv());
                     
                     //new Vector3(-2.17f, 1.52f, 10.47f)
-                    transform.DOMove(transform.position, 3f).SetEase(Ease.Flash).OnComplete(
+                    transform.DOMove(transform.position, 0.9f).SetEase(Ease.Flash).OnComplete(
                                         () => Player.transform.DOMove(Player.transform.position, 0.1f).SetEase(Ease.Flash)
                         .OnComplete(SetSlotsActive));
 
@@ -221,6 +228,7 @@ public class TeacherController : MonoBehaviour
         availableCards.SetActive(true);
         slots.SetActive(true);
         hint.gameObject.SetActive(true);
+        StartCoroutine(HintTextHiding());
 
         HandHint.Instance.Show();
     }
@@ -229,8 +237,11 @@ public class TeacherController : MonoBehaviour
 
     public IEnumerator TextWriting(string Phrase)
     {
+        reloadScene.gameObject.SetActive(false);
+        ready.gameObject.SetActive(false);
+
         reloadScene.enabled = false;
-        ready.enabled = false;
+        ready.enabled = false;     
 
         teacherPhrasePlace.text = "";
 
@@ -259,11 +270,19 @@ public class TeacherController : MonoBehaviour
                 yield return new WaitForSeconds(writingTextSpeed);
             }
 
+            reloadScene.gameObject.SetActive(true);
+            ready.gameObject.SetActive(true);
+
             reloadScene.enabled = true;
             ready.enabled = true;
         }
     }
 
+    public IEnumerator HintTextHiding()
+    {
+        yield return new WaitForSeconds(hintTextHideDelay);
 
+        hint.gameObject.SetActive(false);
+    }
 }
 
