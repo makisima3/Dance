@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class MoveSequenceChecker : MonoBehaviour
 {
+    public bool is2Players = false;
+
+    public string nextLvlSceneName;
 
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject nextLVLButton;
@@ -13,12 +16,12 @@ public class MoveSequenceChecker : MonoBehaviour
     [SerializeField] private Text loseText;
     [SerializeField] private float loseTextHideDelay = 10;
 
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject playerPrefab, Player2;
 
     [SerializeField] private List<Slot> endSlots;
 
     [SerializeField] private GameObject blackoutPanel;
-    [SerializeField] private GameObject particles;
+    [SerializeField] private GameObject particles, particles2;
     [SerializeField] private GameObject likesAndComentsPanel;
 
     [SerializeField] private Text likesCountPlace;
@@ -35,6 +38,7 @@ public class MoveSequenceChecker : MonoBehaviour
 
     private Coroutine movesChek;
     private bool doMoveChek = true;
+    
 
     public void Start()
     {
@@ -58,20 +62,20 @@ public class MoveSequenceChecker : MonoBehaviour
             {
                 slot.GetCurrentCard().GetComponent<Image>().color = Color.white;
             }
-                //if (MoveSequence())
-                //{
-                //    TeacherController.Instance.StopDance();
-                //    StartCoroutine(SyncDances());
+            //if (MoveSequence())
+            //{
+            //    TeacherController.Instance.StopDance();
+            //    StartCoroutine(SyncDances());
 
-                //    Debug.Log("vin!");
-                //}
-                //else
-                //{
-                //    StartCoroutine(PlayerAnsyncDance());
+            //    Debug.Log("vin!");
+            //}
+            //else
+            //{
+            //    StartCoroutine(PlayerAnsyncDance());
 
-                //    Debug.Log("lose!:(");
-                //}
-                isFirstMove = true;
+            //    Debug.Log("lose!:(");
+            //}
+            isFirstMove = true;
             doMoveChek = true;
             playButton.GetComponent<Button>().interactable = false;
             movesChek = StartCoroutine(MovesChek());
@@ -145,6 +149,8 @@ public class MoveSequenceChecker : MonoBehaviour
                     slot.GetCurrentCard().GetComponent<Image>().color = Color.green;
 
                     playerPrefab.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
+                    if (is2Players)
+                        Player2.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
                     TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
                 }
 
@@ -224,6 +230,7 @@ public class MoveSequenceChecker : MonoBehaviour
         loseText.gameObject.SetActive(false);
 
         particles.SetActive(true);
+        particles2.SetActive(true);
         blackoutPanel.SetActive(true);
         likesAndComentsPanel.SetActive(true);
         nextLVLButton.SetActive(true);
@@ -261,6 +268,6 @@ public class MoveSequenceChecker : MonoBehaviour
 
     public void NextLVL()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(nextLvlSceneName);
     }
 }

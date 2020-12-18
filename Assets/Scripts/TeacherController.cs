@@ -14,7 +14,7 @@ public class TeacherController : MonoBehaviour
     public GameObject availableCards;
     public GameObject slots;
     public GameObject phone;
-    
+
     public Button reloadScene, ready, speedButton;
 
     public Sprite speed_1X, speed_2X;
@@ -36,11 +36,15 @@ public class TeacherController : MonoBehaviour
 
     public string teacherPhrase1;
     public string teacherPhrase2;
-    public bool doDance = true;  
+    public bool doDance = true;
 
     public bool isRewind = true;
 
     public float hintTextHideDelay = 20;
+
+    public bool isTraining = false;
+
+    
 
     private Coroutine danceCoroutine;
 
@@ -62,7 +66,7 @@ public class TeacherController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(TextWriting(teacherPhrase1));
+
         if (isRewind)
             Time.timeScale = 10f;
 
@@ -71,17 +75,21 @@ public class TeacherController : MonoBehaviour
         stateNAme.Add("Saisa", "Gypsy flower");
         stateNAme.Add("Snake", "Snake");
 
+        if (isTraining)
+            StartCoroutine(TextWriting(teacherPhrase1));
+        else
+            danceCoroutine = StartCoroutine(TeacherDancing());
         //danceCoroutine = StartCoroutine(TeacherDancing());
     }
 
     private void Update()
     {
-        
+
     }
 
     public void SpeedChange()
     {
-        if(isSpeedUp)
+        if (isSpeedUp)
         {
             Time.timeScale = 2;
 
@@ -89,7 +97,7 @@ public class TeacherController : MonoBehaviour
             //speedChangeButtonTXT.text = "X2";
             isSpeedUp = false;
         }
-        else if(!isSpeedUp)
+        else if (!isSpeedUp)
         {
             Time.timeScale = 1;
 
@@ -130,10 +138,10 @@ public class TeacherController : MonoBehaviour
 
             isFirstMove = false;
 
-           
 
-            GetComponent<Animator>().SetTrigger(moveSequence[animIndex]); 
-            
+
+            GetComponent<Animator>().SetTrigger(moveSequence[animIndex]);
+
             AnimatorStateInfo animatorClipInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
 
             miniMoveNumber.text = "#" + (animIndex + 1);
@@ -152,7 +160,7 @@ public class TeacherController : MonoBehaviour
                     moveNumber.gameObject.SetActive(false);
                     phone.GetComponent<Animator>().SetTrigger("Move");
                     StartCoroutine(TextActiv());
-                    
+
                     //new Vector3(-2.17f, 1.52f, 10.47f)
                     transform.DOMove(transform.position, 0.9f).SetEase(Ease.Flash).OnComplete(
                                         () => Player.transform.DOMove(Player.transform.position, 0.1f).SetEase(Ease.Flash)
@@ -180,7 +188,7 @@ public class TeacherController : MonoBehaviour
 
     public string GetStateName(AnimatorStateInfo state)
     {
-        if(state.IsName("Wavy steps"))
+        if (state.IsName("Wavy steps"))
         {
             return "Wavy steps";
         }
@@ -224,7 +232,7 @@ public class TeacherController : MonoBehaviour
 
     public void SetSlotsActive()
     {
-        
+
         availableCards.SetActive(true);
         slots.SetActive(true);
         hint.gameObject.SetActive(true);
@@ -233,7 +241,7 @@ public class TeacherController : MonoBehaviour
         HandHint.Instance.Show();
     }
 
-    
+
 
     public IEnumerator TextWriting(string Phrase)
     {
@@ -241,7 +249,7 @@ public class TeacherController : MonoBehaviour
         ready.gameObject.SetActive(false);
 
         reloadScene.enabled = false;
-        ready.enabled = false;     
+        ready.enabled = false;
 
         teacherPhrasePlace.text = "";
 
