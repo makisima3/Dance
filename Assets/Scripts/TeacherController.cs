@@ -168,7 +168,7 @@ public class TeacherController : MonoBehaviour
                     Time.timeScale = 1f;
                     yield return new WaitForSeconds(teacher.GetCurrentAnimatorStateInfo(0).length);
 
-                    if (!isTraining)
+                    if (isTraining)
                         moveNumber.gameObject.SetActive(false);
                     phone.GetComponent<Animator>().SetTrigger("Move");
                     StartCoroutine(TextActiv());
@@ -195,7 +195,7 @@ public class TeacherController : MonoBehaviour
     IEnumerator TextActiv()
     {
         yield return new WaitForSeconds(phone.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-        if (!isTraining)
+        if (isTraining)
             miniMoveNumber.gameObject.SetActive(true);
     }
 
