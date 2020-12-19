@@ -9,7 +9,7 @@ public class TeacherController : MonoBehaviour
 {
     public static TeacherController Instance { get; private set; }
 
-    public GameObject teacher;
+    public Animator teacher;
     public GameObject Player;
     public GameObject availableCards;
     public GameObject slots;
@@ -44,7 +44,7 @@ public class TeacherController : MonoBehaviour
 
     public bool isTraining = false;
 
-    
+
 
     private Coroutine danceCoroutine;
 
@@ -59,7 +59,7 @@ public class TeacherController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        teacher = transform.gameObject;
+        teacher = GetComponent<Animator>();
 
         stateNAme = new Dictionary<string, string>();
     }
@@ -74,6 +74,12 @@ public class TeacherController : MonoBehaviour
         stateNAme.Add("HipHop", "Shaking");
         stateNAme.Add("Saisa", "Gypsy flower");
         stateNAme.Add("Snake", "Snake");
+
+        stateNAme.Add("1", "1");
+        stateNAme.Add("2", "2");
+        stateNAme.Add("3", "3");
+        stateNAme.Add("4", "4");
+        stateNAme.Add("5", "5");
 
         if (isTraining)
             StartCoroutine(TextWriting(teacherPhrase1));
@@ -112,6 +118,11 @@ public class TeacherController : MonoBehaviour
         StopCoroutine(danceCoroutine);
     }
 
+    internal void StartDance()
+    {
+        danceCoroutine = StartCoroutine(TeacherDancing());
+    }
+
     public void ReloadClip()
     {
         StopCoroutine(TextWriting(teacherPhrase1));
@@ -134,15 +145,15 @@ public class TeacherController : MonoBehaviour
         {
 
             if (!isFirstMove)
-                yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+                yield return new WaitForSeconds(teacher.GetCurrentAnimatorStateInfo(0).length);
 
             isFirstMove = false;
 
 
 
-            GetComponent<Animator>().SetTrigger(moveSequence[animIndex]);
+            teacher.SetTrigger(moveSequence[animIndex]);
 
-            AnimatorStateInfo animatorClipInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+            AnimatorStateInfo animatorClipInfo = teacher.GetCurrentAnimatorStateInfo(0);
 
             miniMoveNumber.text = "#" + (animIndex + 1);
             teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":" + stateNAme[moveSequence[animIndex]];
@@ -155,9 +166,10 @@ public class TeacherController : MonoBehaviour
                 if (isLastMove)
                 {
                     Time.timeScale = 1f;
-                    yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+                    yield return new WaitForSeconds(teacher.GetCurrentAnimatorStateInfo(0).length);
 
-                    moveNumber.gameObject.SetActive(false);
+                    if (!isTraining)
+                        moveNumber.gameObject.SetActive(false);
                     phone.GetComponent<Animator>().SetTrigger("Move");
                     StartCoroutine(TextActiv());
 
@@ -183,7 +195,8 @@ public class TeacherController : MonoBehaviour
     IEnumerator TextActiv()
     {
         yield return new WaitForSeconds(phone.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-        miniMoveNumber.gameObject.SetActive(true);
+        if (!isTraining)
+            miniMoveNumber.gameObject.SetActive(true);
     }
 
     public string GetStateName(AnimatorStateInfo state)

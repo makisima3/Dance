@@ -27,8 +27,8 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
             currentCard.GetComponent<Image>().color = Color.white;
 
             Hand.Instance.Take(this.TakeCard(), this);
-
-            HandHint.Instance.Hide();
+            if (TeacherController.Instance.isTraining)
+                HandHint.Instance.Hide();
         }
     }
 

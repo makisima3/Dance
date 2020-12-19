@@ -10,13 +10,15 @@ public class MoveSequenceChecker : MonoBehaviour
 
     public string nextLvlSceneName;
 
+    public Text miniMoveNumber;
+
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject nextLVLButton;
 
     [SerializeField] private Text loseText;
     [SerializeField] private float loseTextHideDelay = 10;
 
-    [SerializeField] private GameObject playerPrefab, Player2;
+    [SerializeField] private Animator playerPrefab, Player2;
 
     [SerializeField] private List<Slot> endSlots;
 
@@ -38,7 +40,14 @@ public class MoveSequenceChecker : MonoBehaviour
 
     private Coroutine movesChek;
     private bool doMoveChek = true;
-    
+    private bool IsLose = false;
+
+
+
+    private void Awake()
+    {
+
+    }
 
     public void Start()
     {
@@ -78,6 +87,7 @@ public class MoveSequenceChecker : MonoBehaviour
             isFirstMove = true;
             doMoveChek = true;
             playButton.GetComponent<Button>().interactable = false;
+            TeacherController.Instance.StopDance();
             movesChek = StartCoroutine(MovesChek());
             Debug.Log("ТУТ ВЫКЛЮЧАЕТЬСЯ КНОПКА");
         }
@@ -133,7 +143,7 @@ public class MoveSequenceChecker : MonoBehaviour
             if (doMoveChek)
             {
                 if (!isFirstMove)
-                    yield return new WaitForSeconds(TeacherController.Instance.teacher.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+                    yield return new WaitForSeconds(TeacherController.Instance.teacher.GetCurrentAnimatorStateInfo(0).length);
                 isFirstMove = false;
                 var playerMove = slot.GetCurrentCard().data.danceParameterName;
                 var teacherMove = TeacherController.Instance.moveSequence[i];
@@ -141,21 +151,22 @@ public class MoveSequenceChecker : MonoBehaviour
                 if (playerMove != teacherMove)
                 {
                     slot.GetCurrentCard().GetComponent<Image>().color = Color.red;
+                    doMoveChek = false;
                     Lose();
                     //playButton.GetComponent<Button>().enabled = true;
                 }
                 else
                 {
                     slot.GetCurrentCard().GetComponent<Image>().color = Color.green;
-
-                    playerPrefab.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
+                    miniMoveNumber.text = "#" + (i + 1);
+                    playerPrefab.SetTrigger(TeacherController.Instance.moveSequence[i]);
                     if (is2Players)
-                        Player2.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
-                    TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[i]);
+                        Player2.SetTrigger(TeacherController.Instance.moveSequence[i]);
+                    TeacherController.Instance.teacher.SetTrigger(TeacherController.Instance.moveSequence[i]);
                 }
 
 
-                if (i >= 3)
+                if (i >= endSlots.Count -1)
                 {
                     Victory();
                     i = 0;
@@ -165,6 +176,7 @@ public class MoveSequenceChecker : MonoBehaviour
             }
             else
             {
+                TeacherController.Instance.StartDance();
                 break;
             }
         }
@@ -210,6 +222,7 @@ public class MoveSequenceChecker : MonoBehaviour
 
     public void Lose()
     {
+        StopCoroutine(MovesChek());
         Debug.Log("LOSE");
         doMoveChek = false;
         playButton.GetComponent<Button>().interactable = true;
@@ -217,7 +230,8 @@ public class MoveSequenceChecker : MonoBehaviour
         if (movesChek != null)
             StopCoroutine(movesChek);
         //TeacherController.Instance.StopDance();
-        playerPrefab.GetComponent<Animator>().SetTrigger("Sad");
+        playerPrefab.SetTrigger("Sad");
+        Player2.SetTrigger("Sad");
         //TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger("Sad");
         loseText.gameObject.SetActive(true);
 
