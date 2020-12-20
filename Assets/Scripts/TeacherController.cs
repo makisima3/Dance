@@ -44,7 +44,7 @@ public class TeacherController : MonoBehaviour
 
     public bool isTraining = false;
 
-
+    public int moveCount = 4;
 
     private Coroutine danceCoroutine;
 
@@ -143,9 +143,10 @@ public class TeacherController : MonoBehaviour
     {
         while (doDance)
         {
+            AnimatorStateInfo animatorClipInfo = teacher.GetCurrentAnimatorStateInfo(0);
 
             if (!isFirstMove)
-                yield return new WaitForSeconds(teacher.GetCurrentAnimatorStateInfo(0).length);
+                yield return new WaitForSeconds(animatorClipInfo.length);
 
             isFirstMove = false;
 
@@ -153,20 +154,21 @@ public class TeacherController : MonoBehaviour
 
             teacher.SetTrigger(moveSequence[animIndex]);
 
-            AnimatorStateInfo animatorClipInfo = teacher.GetCurrentAnimatorStateInfo(0);
+
 
             miniMoveNumber.text = "#" + (animIndex + 1);
             teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":" + stateNAme[moveSequence[animIndex]];
             moveNumber.text = "#" + (animIndex + 1);
             animIndex++;
 
-            if (animIndex >= 4)
+            if (animIndex >= moveCount)
             {
 
                 if (isLastMove)
                 {
-                    Time.timeScale = 1f;
-                    yield return new WaitForSeconds(teacher.GetCurrentAnimatorStateInfo(0).length);
+                    if (isTraining)
+                        Time.timeScale = 1f;
+                    yield return new WaitForSeconds(animatorClipInfo.length);
 
                     if (isTraining)
                         moveNumber.gameObject.SetActive(false);
@@ -248,7 +250,7 @@ public class TeacherController : MonoBehaviour
 
         availableCards.SetActive(true);
         slots.SetActive(true);
-        hint.gameObject.SetActive(true);
+        hint.gameObject.SetActive(false);
         StartCoroutine(HintTextHiding());
 
         HandHint.Instance.Show();

@@ -182,44 +182,6 @@ public class MoveSequenceChecker : MonoBehaviour
         }
     }
 
-
-
-    IEnumerator SyncDances()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(TeacherController.Instance.teacher.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-
-            playerPrefab.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[animIndex]);
-            TeacherController.Instance.teacher.GetComponent<Animator>().SetTrigger(TeacherController.Instance.moveSequence[animIndex]);
-
-            animIndex++;
-
-            if (animIndex >= 4)
-            {
-                animIndex = 0;
-            }
-        }
-    }
-
-    IEnumerator PlayerAnsyncDance()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(playerPrefab.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-
-            var currentMove = endSlots[animIndex].GetCurrentCard().data.danceParameterName;
-            playerPrefab.GetComponent<Animator>().SetTrigger(currentMove);
-
-            animIndex++;
-
-            if (animIndex >= 4)
-            {
-                animIndex = 0;
-            }
-        }
-    }
-
     public void Lose()
     {
         StopCoroutine(MovesChek());
@@ -240,6 +202,15 @@ public class MoveSequenceChecker : MonoBehaviour
 
     public void Victory()
     {
+
+        StartCoroutine(VictoryDelay());
+        
+    }
+
+    IEnumerator VictoryDelay()
+    {
+        yield return new WaitForSeconds(2f);
+
         playButton.SetActive(false);
         loseText.gameObject.SetActive(false);
 
@@ -251,6 +222,26 @@ public class MoveSequenceChecker : MonoBehaviour
 
         StartCoroutine(AddLikes());
         StartCoroutine(AddComents());
+
+        int i = 0;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(TeacherController.Instance.teacher.GetCurrentAnimatorStateInfo(0).length);
+
+            playerPrefab.SetTrigger(TeacherController.Instance.moveSequence[i]);
+            if (is2Players)
+                Player2.SetTrigger(TeacherController.Instance.moveSequence[i]);
+            TeacherController.Instance.teacher.SetTrigger(TeacherController.Instance.moveSequence[i]);
+
+            if (i >= endSlots.Count - 1)
+            {
+                Victory();
+                i = 0;
+            }
+
+            i++;
+        }
     }
 
     IEnumerator LoseTextHiding()

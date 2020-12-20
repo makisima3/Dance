@@ -467,7 +467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &158950875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -890,7 +890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -898,7 +898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -938,11 +938,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 573.72034
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1132,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1140,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1180,11 +1180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 448.7203
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1494,6 +1494,49 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &413117807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413117804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c9dc3e38006c54190e147aaa1d24fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teacher: {fileID: 413117805}
+  Player: {fileID: 837644645}
+  availableCards: {fileID: 1460586021}
+  slots: {fileID: 158950874}
+  phone: {fileID: 919132147571060196}
+  reloadScene: {fileID: 1501817341}
+  ready: {fileID: 629849563}
+  speedButton: {fileID: 1927437429}
+  speed_1X: {fileID: 21300000, guid: a456eadffe60ba44198766698057807b, type: 3}
+  speed_2X: {fileID: 21300000, guid: 4e0af01adeb383444973b63d14933212, type: 3}
+  moveSequence:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  writingTextSpeed: 0.05
+  phraseDelay: 1
+  imageForText: {fileID: 1261312020}
+  teacherPhrasePlace: {fileID: 1986206711}
+  hint: {fileID: 542599994}
+  moveNumber: {fileID: 1644411431}
+  miniMoveNumber: {fileID: 1565103685}
+  speedChangeButtonTXT: {fileID: 1596625516}
+  teacherPhrase1: Hi, I'm Christie, today we will learn to dance!
+  teacherPhrase2: Remember these dance moves
+  doDance: 1
+  isRewind: 1
+  hintTextHideDelay: 10
+  isTraining: 0
+  moveCount: 4
 --- !u!1 &456690531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,8 +2148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: 475}
-  m_SizeDelta: {x: 709.5967, y: 270.25964}
+  m_AnchoredPosition: {x: 15, y: 688}
+  m_SizeDelta: {x: 709.5967, y: 199.17117}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542599994
 MonoBehaviour:
@@ -3093,48 +3136,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &837644648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837644645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79c9dc3e38006c54190e147aaa1d24fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teacher: {fileID: 837644647}
-  Player: {fileID: 413117804}
-  availableCards: {fileID: 1460586021}
-  slots: {fileID: 158950874}
-  phone: {fileID: 919132147571060196}
-  reloadScene: {fileID: 1501817341}
-  ready: {fileID: 629849563}
-  speedButton: {fileID: 1927437429}
-  speed_1X: {fileID: 21300000, guid: a456eadffe60ba44198766698057807b, type: 3}
-  speed_2X: {fileID: 21300000, guid: 4e0af01adeb383444973b63d14933212, type: 3}
-  moveSequence:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  writingTextSpeed: 0.05
-  phraseDelay: 1
-  imageForText: {fileID: 1261312020}
-  teacherPhrasePlace: {fileID: 1986206711}
-  hint: {fileID: 542599994}
-  moveNumber: {fileID: 1644411431}
-  miniMoveNumber: {fileID: 1565103685}
-  speedChangeButtonTXT: {fileID: 1596625516}
-  teacherPhrase1: Hi, I'm Christie, today we will learn to dance!
-  teacherPhrase2: Remember these dance moves
-  doDance: 1
-  isRewind: 0
-  hintTextHideDelay: 10
-  isTraining: 0
 --- !u!1 &866979153
 GameObject:
   m_ObjectHideFlags: 0
@@ -4157,7 +4158,7 @@ MonoBehaviour:
   cameraPrefab: {fileID: 6568177019527598556, guid: 8ff14a3a3efdddf42b5f9fcb61b2982f, type: 3}
   miniPlayerPrefab: {fileID: 413117804}
   baseShader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  externalOffset: {x: 0, y: 2, z: -20}
+  externalOffset: {x: 0, y: 0.75, z: -8.95}
 --- !u!4 &1252200527
 Transform:
   m_ObjectHideFlags: 0
@@ -4165,7 +4166,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252200525}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -1292, y: 1082.9376, z: 270.8545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5415,7 +5416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -5423,7 +5424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5463,11 +5464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 198.7203
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6948,7 +6949,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 837644648}
+      - m_Target: {fileID: 413117807}
         m_TargetAssemblyTypeName: TeacherController, Assembly-CSharp
         m_MethodName: SpeedChange
         m_Mode: 1
@@ -7059,7 +7060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -7067,7 +7068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -7107,11 +7108,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 73.72031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7552,7 +7553,7 @@ MonoBehaviour:
   nextLVLButton: {fileID: 1912915906}
   loseText: {fileID: 1888862850}
   loseTextHideDelay: 5
-  playerPrefab: {fileID: 413117805}
+  playerPrefab: {fileID: 837644647}
   Player2: {fileID: 1932059069}
   endSlots:
   - {fileID: 754011107}
@@ -7975,7 +7976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.x
@@ -7983,7 +7984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -8023,11 +8024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 323.7203
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -110
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170063161969720941, guid: 8d1a22639aa29324f872044f4447b6f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
