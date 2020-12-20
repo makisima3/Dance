@@ -9,6 +9,7 @@ public class TeacherController : MonoBehaviour
 {
     public static TeacherController Instance { get; private set; }
 
+    [HideInInspector]
     public Animator teacher;
     public GameObject Player;
     public GameObject availableCards;
@@ -84,7 +85,7 @@ public class TeacherController : MonoBehaviour
         if (isTraining)
             StartCoroutine(TextWriting(teacherPhrase1));
         else
-            danceCoroutine = StartCoroutine(TeacherDancing());
+            StartCoroutine(TeacherDancingStartDelay());
         //danceCoroutine = StartCoroutine(TeacherDancing());
     }
 
@@ -135,6 +136,13 @@ public class TeacherController : MonoBehaviour
         //teacherPhrasePlace.gameObject.SetActive(false);
         reloadScene.gameObject.SetActive(false);
         ready.gameObject.SetActive(false);
+
+        danceCoroutine = StartCoroutine(TeacherDancing());
+    }
+
+    public IEnumerator TeacherDancingStartDelay()
+    {
+        yield return new WaitForSeconds(2f);
 
         danceCoroutine = StartCoroutine(TeacherDancing());
     }

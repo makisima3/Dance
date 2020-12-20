@@ -19,6 +19,7 @@ public class Card : MonoBehaviour
 
     public void Initialaze(float offset, CardData cardData)
     {
+
         data = cardData;
 
         animator = MiniPlayerDirector.Instance.Create(offset, this);

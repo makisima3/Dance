@@ -23,7 +23,6 @@ public class MiniPlayerDirector : MonoBehaviour
         var newMiniPlayer = Instantiate(miniPlayerPrefab, transform, false);
         newMiniPlayer.transform.localPosition = position;
 
-
         var cameraPosition = new Vector3(position.x + externalOffset.x, position.y + externalOffset.y, externalOffset.z);
 
         var newCamera = Instantiate(cameraPrefab, transform, false);

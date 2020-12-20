@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Dragslvl2.unity
     guid: 53a5ddcb6c4caa343abfec430cee2713
   - enabled: 1
-    path: Assets/Scenes/Dragslvl3.unity
+    path: Assets/Scenes/workingVersion.unity
     guid: cd01121be00fe104e87f2ae6ad0d530e
   m_configObjects: {}
