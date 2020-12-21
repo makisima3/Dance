@@ -72,16 +72,16 @@ public class TeacherController : MonoBehaviour
         if (isRewind)
             Time.timeScale = 10f;
 
-        stateNAme.Add("Rumba", "Wavy steps");
-        stateNAme.Add("HipHop", "Shaking");
-        stateNAme.Add("Saisa", "Gypsy flower");
-        stateNAme.Add("Snake", "Snake");
+        stateNAme.Add("Rumba", "Let's make a wave");
+        stateNAme.Add("HipHop", "I'm sexy and I know it");
+        stateNAme.Add("Saisa", "Heartbeat");
+        stateNAme.Add("Snake", "Funny step");
 
-        stateNAme.Add("1", "1");
-        stateNAme.Add("2", "2");
-        stateNAme.Add("3", "3");
-        stateNAme.Add("4", "4");
-        stateNAme.Add("5", "5");
+        stateNAme.Add("1", "Wooden Man");
+        stateNAme.Add("2", "Funny step");
+        stateNAme.Add("3", "Walk of the greats");
+        stateNAme.Add("4", "Stance and somersault");
+        stateNAme.Add("5", "The Final Pause");
 
         if (isTraining)
             StartCoroutine(TextWriting(teacherPhrase1));
@@ -171,7 +171,7 @@ public class TeacherController : MonoBehaviour
 
 
             miniMoveNumber.text = "#" + (animIndex + 1);
-            teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":" + stateNAme[moveSequence[animIndex]];
+            teacherPhrasePlace.text = "Movement №" + (animIndex + 1) + ":\n" + stateNAme[moveSequence[animIndex]];
             moveNumber.text = "#" + (animIndex + 1);
             animIndex++;
 
@@ -183,7 +183,10 @@ public class TeacherController : MonoBehaviour
                     if (isTraining)
                         Time.timeScale = 1f;
 
-                    yield return new WaitForSeconds(animatorClipInfo.length);
+                    if (animatorClipInfo.length <= 5f)
+                        yield return new WaitForSeconds(animatorClipInfo.length);
+                    else
+                        yield return new WaitForSeconds(5f);
 
 
                     if (isTraining)
@@ -266,10 +269,14 @@ public class TeacherController : MonoBehaviour
 
         availableCards.SetActive(true);
         slots.SetActive(true);
-        hint.gameObject.SetActive(false);
+        hint.gameObject.SetActive(true);
 
         if (!isTraining)
+        {
             secondHint.gameObject.SetActive(true);
+            hint.gameObject.SetActive(false);
+        }
+            
 
         StartCoroutine(HintTextHiding());
 

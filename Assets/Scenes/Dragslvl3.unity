@@ -5031,11 +5031,11 @@ MonoBehaviour:
   cardsContainer: {fileID: 359965921}
   cameraPrefab: {fileID: 6568177019527598556, guid: 8ff14a3a3efdddf42b5f9fcb61b2982f, type: 3}
   cardDatas:
-  - {fileID: 11400000, guid: 2758e508fdc573749ac90a198b80fea6, type: 2}
   - {fileID: 11400000, guid: 5bd960400409819449c8ea73d68a0c5e, type: 2}
-  - {fileID: 11400000, guid: bba0fec3a0936634e8633feece8cc3b8, type: 2}
   - {fileID: 11400000, guid: d6d0f2685bf634b40a39e277c9912ec1, type: 2}
+  - {fileID: 11400000, guid: 2758e508fdc573749ac90a198b80fea6, type: 2}
   - {fileID: 11400000, guid: db77d04ffc4734b4a957045f14610d2b, type: 2}
+  - {fileID: 11400000, guid: bba0fec3a0936634e8633feece8cc3b8, type: 2}
   baseMaterial: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1460586024
 MonoBehaviour:
