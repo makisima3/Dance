@@ -2850,7 +2850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 86, y: -151}
+  m_AnchoredPosition: {x: 169, y: -151}
   m_SizeDelta: {x: 170.22308, y: 168.92114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1565103685
@@ -2874,8 +2874,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_Font: {fileID: 12800000, guid: c3c4c5e743774d645a0c7b979da739e1, type: 3}
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 8
@@ -5155,8 +5155,8 @@ MonoBehaviour:
   likesAndComentsPanel: {fileID: 512905047}
   likesCountPlace: {fileID: 295413623}
   comentsCountPlace: {fileID: 1546876823}
-  likesCount: 4000
-  comentsCount: 500
+  likesCount: 4820
+  comentsCount: 557
   likesAddSpeed: 0.01
   comentsAddSpeed: 0.1
 --- !u!4 &2010630117
