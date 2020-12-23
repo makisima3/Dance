@@ -72,11 +72,19 @@ public class TeacherController : MonoBehaviour
         if (isRewind)
             Time.timeScale = 10f;
 
+        //lvl1
+        stateNAme.Add("Wavy steps", "Wavy steps");
+        stateNAme.Add("Gypsy flower", "Gypsy flower");
+        stateNAme.Add("Snakes", "Snakes");
+        stateNAme.Add("Shaking", "Shaking");
+
+        //lvl2
         stateNAme.Add("Rumba", "Let's make a wave");
         stateNAme.Add("HipHop", "I'm sexy and I know it");
         stateNAme.Add("Saisa", "Heartbeat");
         stateNAme.Add("Snake", "Funny step");
 
+        //lvl3
         stateNAme.Add("1", "Wooden Man");
         stateNAme.Add("2", "Funny step");
         stateNAme.Add("3", "Walk of the greats");

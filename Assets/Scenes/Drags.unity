@@ -1595,10 +1595,10 @@ MonoBehaviour:
   speed_1X: {fileID: 21300000, guid: a456eadffe60ba44198766698057807b, type: 3}
   speed_2X: {fileID: 21300000, guid: 4e0af01adeb383444973b63d14933212, type: 3}
   moveSequence:
-  - Rumba
-  - Saisa
-  - Snake
-  - HipHop
+  - Wavy steps
+  - Gypsy flower
+  - Snakes
+  - Shaking
   writingTextSpeed: 0.05
   phraseDelay: 1
   imageForText: {fileID: 1261312020}
