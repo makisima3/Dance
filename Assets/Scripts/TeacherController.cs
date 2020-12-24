@@ -71,7 +71,7 @@ public class TeacherController : MonoBehaviour
 
         if (isRewind)
             Time.timeScale = 10f;
-
+        //В коментах именя уровенй для нейминга
         //lvl1
         stateNAme.Add("Wavy steps", "Wavy steps");
         stateNAme.Add("Gypsy flower", "Gypsy flower");
