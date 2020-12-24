@@ -2042,7 +2042,7 @@ MonoBehaviour:
   teacherPhrase1: Hi, I'm Christie, today we will learn to dance!
   teacherPhrase2: Remember these dance moves
   doDance: 1
-  isRewind: 0
+  isRewind: 1
   hintTextHideDelay: 10
   isTraining: 0
   moveCount: 4
@@ -3042,10 +3042,10 @@ MonoBehaviour:
   cardsContainer: {fileID: 359965921}
   cameraPrefab: {fileID: 6568177019527598556, guid: 8ff14a3a3efdddf42b5f9fcb61b2982f, type: 3}
   cardDatas:
-  - {fileID: 11400000, guid: c1254c32b32507b4392a638e24dbaa5a, type: 2}
-  - {fileID: 11400000, guid: 74bdb6cd2953ef9408e4c30ee0ae6aca, type: 2}
-  - {fileID: 11400000, guid: 3f68d13c5cb1f8a4f8e3d1feb5dd519b, type: 2}
-  - {fileID: 11400000, guid: db0950fa2e3f61d478f9f8a7b7752c0a, type: 2}
+  - {fileID: 11400000, guid: 3cfdec6e2eb1d5e4cb6ab1f18364b55e, type: 2}
+  - {fileID: 11400000, guid: 039b6ba8c1208b34ca2d9a7234f91208, type: 2}
+  - {fileID: 11400000, guid: 5e8f3e07adb466c4f98da7fe3799b72f, type: 2}
+  - {fileID: 11400000, guid: 9069c65bcd3ac1041a7e199dd2d095cc, type: 2}
   baseMaterial: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1460586024
 MonoBehaviour:

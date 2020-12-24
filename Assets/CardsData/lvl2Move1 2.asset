@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e57dfc349e7506468134c1a10f5381d, type: 3}
-  m_Name: Move 3
+  m_Name: lvl2Move1 2
   m_EditorClassIdentifier: 
-  avatar: {fileID: 919132149155446097, guid: 1e4bbea54f03b05409baf91ecdbd294f, type: 3}
-  danceParameterName: Shaking
+  avatar: {fileID: 0}
+  danceParameterName: Snake
   normalParameterName: idle
